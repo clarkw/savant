@@ -16,9 +16,7 @@ def main(songdata):
     first_line = True
     line_count = len(open(file_path).readlines())
     if line_count < 1 or line_count > 50000:
-        print('Linecount must be from 1 to 50,000')
-        print('Aborting')
-        sys.exit();
+        abort('Linecount must be from 1 to 50,000')
     with open(file_path, "rt") as in_file:
         for line in in_file:
             tmp_line = line.rstrip('\n').split(',')
@@ -26,34 +24,20 @@ def main(songdata):
                 num_songs = int(tmp_line[0])
                 num_select = int(tmp_line[1])
                 if num_songs < 1 or num_songs > 50000:
-                    print('Number of songs must be from 1 to 50,000')
-                    print('Aborting')
-                    in_file.close()
-                    sys.exit();
+                    abort('Number of songs must be from 1 to 50,000')
                 if num_select < 1 or num_select > line_count:
-                    print('Number to select must be from 1 to ' + line_count)
-                    print('Aborting')
-                    in_file.close()
-                    sys.exit();
+                    abort('Number to select must be from 1 to ' + line_count)
                 first_line = False
                 continue
 
             play_count = int(tmp_line[0])
             song_name = tmp_line[1]
             if play_count < 0 or play_count > 10 ** 12:
-                print('Play count must be from 0 to 10^12')
-                print('Aborting')
-                in_file.close()
-                sys.exit();
+                abort('Play count must be from 0 to 10^12')
             if len(song_name) > 30:
-                print('Song name must be no longer than 30 characters')
-                print('Aborting')
-                in_file.close()
-                sys.exit();
+                abort('Song name must be no longer than 30 characters')
             if re.search(r'[^a-z0-9_]', song_name):
-                print('Song name must only contain a-z 0-9 or an underscore (_).')
-                print('Aborting')
-                sys.exit();
+                abort('Song name must only contain a-z 0-9 or an underscore (_).')
             tmp_line.insert(0, line_num)
             z_num = zipf(line_num)
             tmp_line.append(z_num)
@@ -62,13 +46,17 @@ def main(songdata):
             lines.append(tmp_line)
         lines.sort(key = operator.itemgetter(3, 0))
 
-    in_file.close()
     x = 0
     for line in lines:
         while x < num_select:
             print(line[2])
-            x+=1
+            x += 1
             break
+
+def abort(msg):
+  print(msg)
+  print('Aborting')
+  sys.exit()
 
 def zipf(line_num):
     if line_num > 0:
