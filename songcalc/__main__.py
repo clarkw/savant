@@ -40,7 +40,7 @@ def main(songdata):
 
             play_count = int(tmp_line[0])
             song_name = tmp_line[1]
-            if play_count < 0 or play_count > 10 ^ 12:
+            if play_count < 0 or play_count > 10 ** 12:
                 print('Play count must be from 0 to 10^12')
                 print('Aborting')
                 in_file.close()
