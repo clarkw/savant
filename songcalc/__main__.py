@@ -4,13 +4,16 @@ import os
 import operator
 import re
 
+sys.tracebacklimit = 0
 @click.command()
 @click.argument('songdata')
 
 def main(songdata):
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    file_path = dir_path+'/'+songdata
+    file_path = dir_path + '/' + songdata
+    if os.path.isfile(file_path) != True:
+        abort('File not found: ' + file_path)
     lines = []
     line_num = 1
     first_line = True
@@ -45,7 +48,6 @@ def main(songdata):
             line_num += 1
             lines.append(tmp_line)
         lines.sort(key = operator.itemgetter(3, 0))
-
     x = 0
     for line in lines:
         while x < num_select:
