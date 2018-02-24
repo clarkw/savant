@@ -2,6 +2,8 @@
 
 Song Popularity Problem
 
+see Song_Popularity_Problem.pdf
+
 -To Install songcalc on a python 3 ready system, use install.sh
 
 songcalc --help
