@@ -1,8 +1,0 @@
-songcalc/__init__.py
-songcalc/__main__.py
-songcalc.egg-info/PKG-INFO
-songcalc.egg-info/SOURCES.txt
-songcalc.egg-info/dependency_links.txt
-songcalc.egg-info/entry_points.txt
-songcalc.egg-info/requires.txt
-songcalc.egg-info/top_level.txt
