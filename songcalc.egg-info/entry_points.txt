@@ -1,0 +1,3 @@
+[console_scripts]
+songcalc = songcalc.__main__:main
+
