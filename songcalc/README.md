@@ -1,4 +1,0 @@
-# savant
-
-Song Popularity Problem
-

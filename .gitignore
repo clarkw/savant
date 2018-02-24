@@ -2,3 +2,4 @@ venv
 venv1
 .idea
 songcalc.egg-info
+songcalc/__pycache__
