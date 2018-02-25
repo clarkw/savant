@@ -3,3 +3,5 @@ venv1
 .idea
 songcalc.egg-info
 songcalc/__pycache__
+.pytest_cache
+test/__pycache__
